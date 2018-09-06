@@ -1,0 +1,3 @@
+[submodule "Assets/ScaliscoCommon"]
+	path = Assets/ScaliscoCommon
+	url = https://github.com/dlees/ScaliscoCommon.git
