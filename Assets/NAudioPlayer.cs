@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.IO;
 using System;
+
+#if UNITY_STANDALONE
+
 using NAudio;
 using NAudio.Wave;
 
@@ -103,3 +106,5 @@ public class WAV {
         return string.Format("[WAV: LeftChannel={0}, RightChannel={1}, ChannelCount={2}, SampleCount={3}, Frequency={4}]", LeftChannel, RightChannel, ChannelCount, SampleCount, Frequency);
     }
 }
+
+#endif

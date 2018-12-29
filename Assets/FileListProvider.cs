@@ -5,23 +5,26 @@ using System.IO;
 
 public class FileListProvider : MonoBehaviour {
 
+    public StringReference directoryPath = new StringReference("C:\\Users\\Dan\\Music\\Kim\\KW - KW");
+
     public StringSetReference stringSetOutput;
-    public StringReference stringToPopulate;
 
-	// Use this for initialization
-    void Start () {
-         DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Dan\\Music\\Kim\\KW - KW");
-         FileInfo[] info = dir.GetFiles("*.mp3");
+    void Start() {
+        loadDirectory();
+    }
 
+    public void loadDirectory() {
+        stringSetOutput.Clear();
+        DirectoryInfo dir = new DirectoryInfo(directoryPath.Value);
+
+        DirectoryInfo[] dinfo = dir.GetDirectories("*");
+        foreach (DirectoryInfo f in dinfo) {
+            stringSetOutput.Add(f.FullName);
+        }
+
+        FileInfo[] info = dir.GetFiles("*.mp3");
          foreach (FileInfo f in info) {
              stringSetOutput.Add(f.FullName); 
          }
-
-         stringToPopulate.setValue("file:///" + info[0].FullName);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
